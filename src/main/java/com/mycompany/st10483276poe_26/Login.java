@@ -18,11 +18,14 @@ public class Login {
     }
     
     public boolean checkCellPhoneNumber(String cellNumber){
-        String regex = "^(\\\\+27 |0)[6-8][0-9]{8}$";
+        if (cellNumber == null){
+            return false;
+        }
+        String regex = "^(\\+27|0)[6-8][0-9]{8}$"; 
         return cellNumber.matches(regex);
     }
     
-    public String registerUser(String Username, String Password, String firstName, String cellNumber, String cellNumber1){
+    public String registerUser(String Username, String Password, String firstName, String lastName, String cellNumber){
         if (!checkUserName(Username)) {
             return "Incorrect username format! please try again and make sure your username has an underscore '_' and charcaters are not longer than 5.";
         }
